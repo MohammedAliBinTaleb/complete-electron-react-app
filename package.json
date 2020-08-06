@@ -1,0 +1,68 @@
+{
+  "name": "electron-react",
+  "version": "0.1.0",
+  "description": "this is my first app",
+  "author": "mohammed ali bin taleb",
+  "build": {
+    "appId": "myapp.moh",
+    "icon": "src/new-Logo.ico"
+  },
+  "homepage": "./",
+  "main": "public/electron.js",
+  "dependencies": {
+    "@chakra-ui/core": "^0.8.0",
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "chokidar-cli": "^2.1.0",
+    "cross-env": "^7.0.2",
+    "electron-is-dev": "^1.2.0",
+    "emotion-theming": "^10.0.27",
+    "hijri": "^0.5.0",
+    "mobx": "^5.15.5",
+    "mobx-react": "^6.2.5",
+    "npm-run-all": "^4.1.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "tailwindcss": "^1.6.2"
+  },
+  "scripts": {
+    "build:tailwind": "tailwindcss build src/tailwind.css -o src/tailwind.output.css",
+    "watch:tailwind": "chokidar 'src/**/*.css' 'src/**/*.scss' --ignore src/tailwind.output.css -c 'npm run build:tailwind'",
+    "prestart": "npm run build:tailwind",
+    "prebuild": "npm run build:tailwind",
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder",
+    "build": "npm run react-build && npm run electron-build",
+    "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\" \"npm run watch:tailwind\""
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "electron": "^9.1.2",
+    "electron-builder": "^22.8.0",
+    "wait-on": "^5.1.0"
+  }
+}
